@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "My Annotation Extension",
+  "name": "Personal Annotation",
   "version": "1.0",
   "description": "Highlight text and draw shapes on web pages.",
   "permissions": [

@@ -1,4 +1,4 @@
-# My Annotation Extension
+# Personal Annotation
 
 This is a simple extension for annotating text in the browser. It allows you to highlight text and add notes to it. The annotations are stored in the browser's local storage, so they will persist even after you close the browser.
 
@@ -50,6 +50,18 @@ This is a simple extension for annotating text in the browser. It allows you to 
    - Clear all annotations for a page
 5. To delete an annotation, click the "Delete" button next to the annotation in the list.
 6. To clear all annotations on the current page, click the "Clear Annotations" button.
+
+## Release
+
+Macos: 
+```bash
+zip -r my-annotation-extension.zip . -x '*.git*'
+```
+
+Windows (powershell):
+```bash
+Compress-Archive -Path "percorso\alla\tua\cartella\*" -DestinationPath "my-annotation-extension.zip" -Exclude '*.git*'
+```
 
 ## Credits
 
