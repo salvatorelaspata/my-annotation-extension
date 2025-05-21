@@ -438,4 +438,5 @@ document.addEventListener('selectstart', function (e) {
   if (currentMode === 'draw') {
     e.preventDefault();
   }
+  // In browse mode, don't prevent text selection
 });

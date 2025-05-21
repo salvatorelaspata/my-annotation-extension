@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const highlightBtn = document.getElementById('highlightBtn');
   const drawBtn = document.getElementById('drawBtn');
+  const browseBtn = document.getElementById('browseBtn');
   const clearBtn = document.getElementById('clearBtn');
   const viewAnnotationsBtn = document.getElementById('viewAnnotationsBtn');
   const highlightOptions = document.getElementById('highlightOptions');
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Recupera la modalità corrente e le preferenze dallo storage locale
   chrome.storage.local.get(['annotationMode', 'highlightColor', 'shapeColor', 'shapeType'], function (result) {
-    const currentMode = result.annotationMode || 'highlight';
+    const currentMode = result.annotationMode || 'browse';
     const currentHighlightColor = result.highlightColor || 'yellow';
     const currentShapeColor = result.shapeColor || 'red';
     const currentShapeType = result.shapeType || 'rectangle';
@@ -20,13 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (currentMode === 'highlight') {
       highlightBtn.classList.add('active');
       drawBtn.classList.remove('active');
+      browseBtn.classList.remove('active');
       highlightOptions.classList.remove('hidden');
       drawOptions.classList.add('hidden');
-    } else {
+    } else if (currentMode === 'draw') {
       drawBtn.classList.add('active');
       highlightBtn.classList.remove('active');
+      browseBtn.classList.remove('active');
       drawOptions.classList.remove('hidden');
       highlightOptions.classList.add('hidden');
+    } else if (currentMode === 'browse') {
+      browseBtn.classList.add('active');
+      highlightBtn.classList.remove('active');
+      drawBtn.classList.remove('active');
+      highlightOptions.classList.add('hidden');
+      drawOptions.classList.add('hidden');
     }
 
     // Imposta il colore di evidenziatura attivo
@@ -51,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.storage.local.set({ annotationMode: 'highlight' }, function () {
       highlightBtn.classList.add('active');
       drawBtn.classList.remove('active');
+      browseBtn.classList.remove('active');
       highlightOptions.classList.remove('hidden');
       drawOptions.classList.add('hidden');
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -63,10 +73,25 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.storage.local.set({ annotationMode: 'draw' }, function () {
       drawBtn.classList.add('active');
       highlightBtn.classList.remove('active');
+      browseBtn.classList.remove('active');
       drawOptions.classList.remove('hidden');
       highlightOptions.classList.add('hidden');
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { action: "setMode", mode: "draw" });
+      });
+    });
+  });
+
+  // Add event listener for the browse button
+  browseBtn.addEventListener('click', function () {
+    chrome.storage.local.set({ annotationMode: 'browse' }, function () {
+      browseBtn.classList.add('active');
+      highlightBtn.classList.remove('active');
+      drawBtn.classList.remove('active');
+      highlightOptions.classList.add('hidden');
+      drawOptions.classList.add('hidden');
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "setMode", mode: "browse" });
       });
     });
   });
