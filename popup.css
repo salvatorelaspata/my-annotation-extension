@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 200px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.controls button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.controls button:hover {
+  background-color: #0056b3;
+}
+
+.controls button.active {
+  background-color: #28a745;
+}
+
+.options-group {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.options-group p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.color-picker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.color-option,
+.shape-color {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 3px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+}
+
+.color-option.active,
+.shape-color.active {
+  border: 2px solid #333;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Annotazione</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+  <h1>Annotazione</h1>
+  <div class="controls">
+    <button id="highlightBtn" class="active">Evidenzia Testo</button>
+    <button id="drawBtn">Disegna Forma</button>
+
+    <div id="highlightOptions" class="options-group">
+      <p>Colore evidenziatura:</p>
+      <div class="color-picker">
+        <div class="color-option" data-color="yellow" style="background-color: yellow;"></div>
+        <div class="color-option" data-color="lightgreen" style="background-color: lightgreen;"></div>
+        <div class="color-option" data-color="lightblue" style="background-color: lightblue;"></div>
+        <div class="color-option" data-color="pink" style="background-color: pink;"></div>
+      </div>
+    </div>
+
+    <div id="drawOptions" class="options-group hidden">
+      <p>Tipo di forma:</p>
+      <select id="shapeType">
+        <option value="rectangle">Rettangolo</option>
+        <option value="circle">Cerchio</option>
+        <option value="line">Linea</option>
+      </select>
+      <p>Colore forma:</p>
+      <div class="color-picker">
+        <div class="shape-color" data-color="red" style="background-color: red;"></div>
+        <div class="shape-color" data-color="green" style="background-color: green;"></div>
+        <div class="shape-color" data-color="blue" style="background-color: blue;"></div>
+        <div class="shape-color" data-color="orange" style="background-color: orange;"></div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
