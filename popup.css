@@ -34,6 +34,14 @@ h1 {
   background-color: #28a745;
 }
 
+.controls button.danger {
+  background-color: #dc3545;
+}
+
+.controls button.danger:hover {
+  background-color: #c82333;
+}
+
 .options-group {
   margin-top: 10px;
   padding: 8px;

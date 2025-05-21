@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const highlightBtn = document.getElementById('highlightBtn');
   const drawBtn = document.getElementById('drawBtn');
+  const clearBtn = document.getElementById('clearBtn');
   const highlightOptions = document.getElementById('highlightOptions');
   const drawOptions = document.getElementById('drawOptions');
   const colorOptions = document.querySelectorAll('.color-option');
@@ -117,5 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.sendMessage(tabs[0].id, { action: "setShapeType", shapeType: selectedShape });
       });
     });
+  });
+
+  // Gestione del click sul pulsante di cancellazione
+  clearBtn.addEventListener('click', function () {
+    if (confirm('Sei sicuro di voler cancellare tutte le annotazioni?')) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "clearAnnotations" });
+      });
+    }
   });
 });
