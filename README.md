@@ -5,9 +5,10 @@ This is a simple extension for annotating text in the browser. It allows you to 
 ## Features
 
 - Highlight text
-- Add notes to highlighted text
+- Draw shapes (rectangle, circle, line)
 - View all annotations
-- Delete annotations
+- Edit annotation colors and shapes
+- Delete individual annotations
 - Clear all annotations
 
 ## Installation
@@ -38,17 +39,17 @@ This is a simple extension for annotating text in the browser. It allows you to 
 
 ## Usage
 
-1. Highlight the text you want to annotate.
-2. Click the extension icon in the browser toolbar to open the popup.
-3. Enter your note in the text area and click "Save" to save the annotation.
-4. To view all annotations, click the "View Annotations" button in the popup.
+1. Highlight the text you want to annotate by selecting it when in "Highlight Text" mode.
+2. Draw shapes by clicking and dragging when in "Draw Shape" mode.
+3. To view all annotations, click the "View Annotations" button in the popup.
+4. In the annotations view, you can:
+   - See all pages with annotations
+   - Edit the color of highlights and shapes
+   - Change the shape type
+   - Delete individual annotations
+   - Clear all annotations for a page
 5. To delete an annotation, click the "Delete" button next to the annotation in the list.
-6. To clear all annotations, click the "Clear All" button in the popup.
-7. To edit an annotation, click the "Edit" button next to the annotation in the list, make your changes, and click "Save".
-8. To highlight text, select the text and click the "Highlight" button in the popup.
-9. To remove the highlight, select the highlighted text and click the "Remove Highlight" button in the popup.
-10. To view the highlighted text, click the "View Highlights" button in the popup.
-11. To remove all highlights, click the "Remove All Highlights" button in the popup.
+6. To clear all annotations on the current page, click the "Clear Annotations" button.
 
 ## Credits
 

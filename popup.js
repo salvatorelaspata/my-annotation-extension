@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const highlightBtn = document.getElementById('highlightBtn');
   const drawBtn = document.getElementById('drawBtn');
   const clearBtn = document.getElementById('clearBtn');
+  const viewAnnotationsBtn = document.getElementById('viewAnnotationsBtn');
   const highlightOptions = document.getElementById('highlightOptions');
   const drawOptions = document.getElementById('drawOptions');
   const colorOptions = document.querySelectorAll('.color-option');
@@ -127,5 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.sendMessage(tabs[0].id, { action: "clearAnnotations" });
       });
     }
+  });
+
+  // Handler for the View Annotations button
+  viewAnnotationsBtn.addEventListener('click', function () {
+    // Open the annotations page in a new tab
+    chrome.tabs.create({ url: "annotations.html" });
   });
 });

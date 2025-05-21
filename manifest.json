@@ -5,7 +5,8 @@
   "description": "Highlight text and draw shapes on web pages.",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"

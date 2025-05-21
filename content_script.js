@@ -26,6 +26,13 @@ function ensureAnnotationContainer() {
 
 // Funzione per salvare le annotazioni per l'URL corrente
 function saveAnnotations() {
+  // Ensure all annotations have unique IDs
+  pageAnnotations.forEach(annotation => {
+    if (!annotation.id) {
+      annotation.id = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+    }
+  });
+
   const currentUrl = window.location.href;
   chrome.storage.local.set({ [currentUrl]: pageAnnotations }, function () {
     console.log('Annotations saved for', currentUrl);
@@ -184,7 +191,35 @@ function clearAllAnnotations() {
   saveAnnotations();
 }
 
-// Listener per i messaggi dal popup
+// Function to delete a specific annotation by ID
+function deleteAnnotation(annotationId) {
+  const index = pageAnnotations.findIndex(annotation => annotation.id === annotationId);
+  if (index !== -1) {
+    // Remove the annotation from the array
+    pageAnnotations.splice(index, 1);
+    // Save the updated annotations
+    saveAnnotations();
+    // Re-render the annotations
+    clearAllAnnotations();
+    renderSavedAnnotations();
+  }
+}
+
+// Function to update a specific annotation
+function updateAnnotation(annotationId, updates) {
+  const index = pageAnnotations.findIndex(annotation => annotation.id === annotationId);
+  if (index !== -1) {
+    // Apply updates to the annotation
+    pageAnnotations[index] = { ...pageAnnotations[index], ...updates };
+    // Save the updated annotations
+    saveAnnotations();
+    // Re-render the annotations
+    clearAllAnnotations();
+    renderSavedAnnotations();
+  }
+}
+
+// Listener for i messaggi dal popup
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "setMode") {
     currentMode = request.mode;
@@ -196,6 +231,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     shapeType = request.shapeType;
   } else if (request.action === "clearAnnotations") {
     clearAllAnnotations();
+  } else if (request.action === "getAnnotations") {
+    sendResponse({ annotations: pageAnnotations });
+  } else if (request.action === "deleteAnnotation") {
+    deleteAnnotation(request.annotationId);
+    sendResponse({ success: true });
+  } else if (request.action === "updateAnnotation") {
+    updateAnnotation(request.annotationId, request.updates);
+    sendResponse({ success: true });
   }
 });
 
@@ -222,8 +265,9 @@ document.addEventListener('mouseup', function () {
       try {
         range.surroundContents(span);
 
-        // Salva l'annotazione
+        // Salva l'annotazione con ID unico
         pageAnnotations.push({
+          id: Date.now() + '-' + Math.random().toString(36).substr(2, 9),
           type: 'highlight',
           color: highlightColor,
           text: text,
@@ -370,6 +414,7 @@ document.addEventListener('mouseup', function (e) {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       pageAnnotations.push({
+        id: Date.now() + '-' + Math.random().toString(36).substr(2, 9),
         type: 'shape',
         shapeType: shapeType,
         color: shapeColor,
