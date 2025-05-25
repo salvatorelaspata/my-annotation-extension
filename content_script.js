@@ -239,6 +239,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   } else if (request.action === "updateAnnotation") {
     updateAnnotation(request.annotationId, request.updates);
     sendResponse({ success: true });
+  } else if (request.action === "ping") {
+    sendResponse({ status: 'ok' });
+    return true;
   }
 });
 

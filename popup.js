@@ -1,4 +1,71 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Add health check function
+  function performHealthCheck() {
+    try {
+      // Check if storage is accessible
+      // chrome.storage.local.get('healthCheck', function (result) {
+      if (chrome.runtime.lastError) {
+        showError('Storage error: ' + chrome.runtime.lastError.message);
+        return;
+      }
+
+      // Check if content script is accessible
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (!tabs || !tabs.length) {
+          showError('Cannot access current tab');
+          return;
+        }
+
+        try {
+          chrome.tabs.sendMessage(tabs[0].id, { action: "ping" }, function (response) {
+            if (chrome.runtime.lastError) {
+              showError('Content script not loaded: ' + chrome.runtime.lastError.message);
+              return;
+            }
+
+            if (!response || response.status !== 'ok') {
+              showError('Content script responded with an error');
+              return;
+            }
+
+            // Everything is working properly
+            hideError();
+          });
+        } catch (e) {
+          showError('Exception: ' + e.message);
+        }
+      });
+      // });
+    } catch (e) {
+      showError('Extension error: ' + e.message);
+    }
+  }
+
+  // Helper to show error
+  function showError(message) {
+    const statusDisplay = document.getElementById('statusDisplay');
+    const statusMessage = statusDisplay.querySelector('.status-message');
+
+    statusDisplay.classList.remove('hidden', 'success');
+    statusMessage.textContent = message;
+
+    // disable buttons
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      button.disabled = true;
+      button.classList.add('disabled');
+    });
+  }
+
+  // Helper to hide error
+  function hideError() {
+    const statusDisplay = document.getElementById('statusDisplay');
+    statusDisplay.classList.add('hidden');
+  }
+
+  // Run health check
+  performHealthCheck();
+
   // Localizza tutti gli elementi con l'attributo data-i18n
 
   const elements = document.querySelectorAll('[data-i18n]');

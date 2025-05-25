@@ -210,7 +210,12 @@ select:hover {
 
 /* Classe hidden */
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .viewAnnotationsBtn {
@@ -237,6 +242,34 @@ select:hover {
 
 .options-group {
   animation: slideIn 0.3s ease;
+}
+
+/* Status display for health check */
+.status-display {
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  border-left: 4px solid #e53e3e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease;
+}
+
+.status-display.success {
+  border-left-color: #48bb78;
+}
+
+.status-icon {
+  font-size: 18px;
+}
+
+.status-message {
+  font-size: 13px;
+  color: #4a5568;
+  flex: 1;
+  line-height: 1.4;
 }
 
 /* Responsive per popup più grandi se necessario */
