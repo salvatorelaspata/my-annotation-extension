@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
   // Localizza tutti gli elementi con l'attributo data-i18n
 
   const elements = document.querySelectorAll('[data-i18n]');
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const highlightBtn = document.getElementById('highlightBtn');
   const drawBtn = document.getElementById('drawBtn');
   const browseBtn = document.getElementById('browseBtn');
-  const clearBtn = document.getElementById('clearBtn');
+  // const clearBtn = document.getElementById('clearBtn');
   const viewAnnotationsBtn = document.getElementById('viewAnnotationsBtn');
   const highlightOptions = document.getElementById('highlightOptions');
   const drawOptions = document.getElementById('drawOptions');
@@ -160,13 +159,13 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Gestione del click sul pulsante di cancellazione
-  clearBtn.addEventListener('click', function () {
-    if (confirm(chrome.i18n.getMessage("confirmClearAnnotations"))) {
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "clearAnnotations" });
-      });
-    }
-  });
+  // clearBtn.addEventListener('click', function () {
+  //   if (confirm(chrome.i18n.getMessage("confirmClearAnnotations"))) {
+  //     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  //       chrome.tabs.sendMessage(tabs[0].id, { action: "clearAnnotations" });
+  //     });
+  //   }
+  // });
 
   // Handler for the View Annotations button
   viewAnnotationsBtn.addEventListener('click', function () {

@@ -1,91 +1,301 @@
+/* Reset e base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  width: 200px;
-  padding: 10px;
-  background-color: #f4f4f4;
-  border-radius: 5px;
-}
-
-h1 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 280px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
   color: #333;
-  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Titolo */
+h1 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 1px;
+}
+
+/* Container controlli */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Bottoni principali */
 .controls button {
   display: block;
   width: 100%;
-  padding: 8px;
-  margin-bottom: 5px;
-  background-color: #007bff;
-  color: white;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #4a5568;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.controls button:hover::before {
+  left: 100%;
 }
 
 .controls button:hover {
-  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 1);
 }
 
+.controls button:active {
+  transform: translateY(0);
+}
+
+/* Bottone attivo */
 .controls button.active {
-  background-color: #28a745;
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  color: white;
+  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.controls button.active:hover {
+  background: linear-gradient(135deg, #38a169, #2f855a);
+  box-shadow: 0 6px 20px rgba(72, 187, 120, 0.5);
+}
+
+/* Bottone di pericolo */
 .controls button.danger {
-  background-color: #dc3545;
+  background: linear-gradient(135deg, #f56565, #e53e3e);
+  color: white;
+  box-shadow: 0 4px 15px rgba(245, 101, 101, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .controls button.danger:hover {
-  background-color: #c82333;
+  background: linear-gradient(135deg, #e53e3e, #c53030);
+  box-shadow: 0 6px 20px rgba(245, 101, 101, 0.5);
 }
 
+/* Gruppi di opzioni */
 .options-group {
-  margin-top: 10px;
-  padding: 8px;
-  background-color: #fff;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  margin-top: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .options-group p {
-  margin: 5px 0;
-  font-size: 0.9em;
-  color: #555;
+  margin: 8px 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+/* Color picker */
 .color-picker {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 5px 0;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
 }
 
 .color-option,
 .shape-color {
-  width: 25px;
-  height: 25px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  margin: 3px;
   cursor: pointer;
-  border: 2px solid #ddd;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-option:hover,
+.shape-color:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .color-option.active,
 .shape-color.active {
-  border: 2px solid #333;
+  border: 3px solid #333;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px white, 0 0 0 5px #333, 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+.color-option.active::after,
+.shape-color.active::after {
+  /* content: '✓'; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Select dropdown */
 select {
   width: 100%;
-  padding: 5px;
-  margin: 5px 0;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  color: #4a5568;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
+select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(103, 126, 234, 0.1);
+}
+
+select:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Classe hidden */
 .hidden {
   display: none;
+}
+
+.viewAnnotationsBtn {
+  border: 1px solid white !important;
+  /* #667eea !important; */
+  color: white !important;
+  /* #667eea !important; */
+  background: rgba(103, 126, 234, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(56, 178, 172, 0.3) !important;
+}
+
+/* Animazioni */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.options-group {
+  animation: slideIn 0.3s ease;
+}
+
+/* Responsive per popup più grandi se necessario */
+@media (min-width: 320px) {
+  body {
+    width: 300px;
+    padding: 24px;
+  }
+
+  .color-picker {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .color-option,
+  .shape-color {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Focus states per accessibilità */
+button:focus,
+select:focus,
+.color-option:focus,
+.shape-color:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Effetti speciali per i color picker specifici */
+.color-option[data-color="yellow"] {
+  box-shadow: 0 2px 8px rgba(255, 255, 0, 0.3);
+}
+
+.color-option[data-color="lightgreen"] {
+  box-shadow: 0 2px 8px rgba(144, 238, 144, 0.3);
+}
+
+.color-option[data-color="lightblue"] {
+  box-shadow: 0 2px 8px rgba(173, 216, 230, 0.3);
+}
+
+.color-option[data-color="pink"] {
+  box-shadow: 0 2px 8px rgba(255, 192, 203, 0.3);
+}
+
+.shape-color[data-color="red"] {
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
+}
+
+.shape-color[data-color="green"] {
+  box-shadow: 0 2px 8px rgba(0, 128, 0, 0.3);
+}
+
+.shape-color[data-color="blue"] {
+  box-shadow: 0 2px 8px rgba(0, 0, 255, 0.3);
+}
+
+.shape-color[data-color="orange"] {
+  box-shadow: 0 2px 8px rgba(255, 165, 0, 0.3);
 }

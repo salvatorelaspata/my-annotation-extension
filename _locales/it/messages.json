@@ -122,5 +122,9 @@
         "example": "200"
       }
     }
+  },
+  "goToWebsiteButton": {
+    "message": "Vai al Sito Web",
+    "description": "Pulsante per andare al sito web della pagina corrente"
   }
 }

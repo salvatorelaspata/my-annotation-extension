@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const annotationList = document.getElementById('annotation-list');
   const refreshBtn = document.getElementById('refresh-btn');
   const clearAllBtn = document.getElementById('clear-all-btn');
+  const goToWebsiteBtn = document.getElementById('goToWebsite-btn');
 
   let currentUrls = [];
   let currentAnnotations = {};
@@ -28,6 +29,13 @@ document.addEventListener('DOMContentLoaded', function () {
   urlSelect.addEventListener('change', displayAnnotationsForUrl);
   refreshBtn.addEventListener('click', refreshAnnotations);
   clearAllBtn.addEventListener('click', clearAllAnnotations);
+  goToWebsiteBtn.addEventListener('click', function () {
+    const url = urlSelect.value;
+    if (url) {
+      chrome.tabs.create({ url: url });
+    }
+  });
+
 
   async function initPage() {
     // Get the current active tab
@@ -166,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Shape type selector
         const shapeTypeSelect = document.createElement('select');
         shapeTypeSelect.className = 'shape-type-select';
+        shapeTypeSelect.name = 'shapeType-' + annotation.id;
+
 
         shapeTypes.forEach(type => {
           const option = document.createElement('option');

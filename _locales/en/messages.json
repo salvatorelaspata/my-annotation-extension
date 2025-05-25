@@ -122,5 +122,9 @@
         "example": "200"
       }
     }
+  },
+  "goToWebsiteButton": {
+    "message": "Go to Website",
+    "description": "Button to navigate to the website of the annotation"
   }
 }
