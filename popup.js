@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+  // Localizza tutti gli elementi con l'attributo data-i18n
+
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(el => {
+    const messageName = el.getAttribute('data-i18n');
+    el.textContent = chrome.i18n.getMessage(messageName);
+  });
+
+  // Aggiorna anche il titolo della pagina
+  document.title = chrome.i18n.getMessage("extName");
+
+
   const highlightBtn = document.getElementById('highlightBtn');
   const drawBtn = document.getElementById('drawBtn');
   const browseBtn = document.getElementById('browseBtn');
@@ -148,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Gestione del click sul pulsante di cancellazione
   clearBtn.addEventListener('click', function () {
-    if (confirm('Sei sicuro di voler cancellare tutte le annotazioni?')) {
+    if (confirm(chrome.i18n.getMessage("confirmClearAnnotations"))) {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { action: "clearAnnotations" });
       });

@@ -2,23 +2,23 @@
 <html>
 
 <head>
-  <title>My Annotations</title>
+  <title data-i18n="myAnnotationsTitle"></title>
   <link rel="stylesheet" type="text/css" href="annotations.css">
 </head>
 
 <body>
   <div class="container">
-    <h1>My Annotations</h1>
+    <h1 data-i18n="myAnnotationsTitle"></h1>
     <div class="url-selector">
-      <label for="url-select">Choose a page:</label>
+      <label for="url-select" data-i18n="choosePageLabel"></label>
       <select id="url-select"></select>
     </div>
     <div class="annotation-list" id="annotation-list">
-      <div class="empty-state">No annotations found.</div>
+      <div class="empty-state" data-i18n="noAnnotationsFound"></div>
     </div>
     <div class="actions">
-      <button id="refresh-btn">Refresh</button>
-      <button id="clear-all-btn" class="danger">Clear All</button>
+      <button id="refresh-btn" data-i18n="refreshButton"></button>
+      <button id="clear-all-btn" class="danger" data-i18n="clearAllButton"></button>
     </div>
   </div>
   <script src="annotations.js"></script>

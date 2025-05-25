@@ -1,0 +1,126 @@
+{
+  "extName": {
+    "message": "La Mia Estensione di Annotazione",
+    "description": "Il nome dell'estensione"
+  },
+  "extDescription": {
+    "message": "Un'estensione per annotare pagine web",
+    "description": "La descrizione dell'estensione"
+  },
+  "browsePageButton": {
+    "message": "Naviga Pagina",
+    "description": "Pulsante per navigare nella pagina"
+  },
+  "highlightTextButton": {
+    "message": "Evidenzia Testo",
+    "description": "Pulsante per evidenziare il testo"
+  },
+  "drawShapeButton": {
+    "message": "Disegna Forma",
+    "description": "Pulsante per disegnare forme"
+  },
+  "viewAnnotationsButton": {
+    "message": "Visualizza Annotazioni",
+    "description": "Pulsante per visualizzare le annotazioni"
+  },
+  "clearAnnotationsButton": {
+    "message": "Cancella Annotazioni",
+    "description": "Pulsante per cancellare tutte le annotazioni"
+  },
+  "highlightColorLabel": {
+    "message": "Colore evidenziatura:",
+    "description": "Etichetta per la selezione del colore di evidenziatura"
+  },
+  "shapeTypeLabel": {
+    "message": "Tipo di forma:",
+    "description": "Etichetta per la selezione del tipo di forma"
+  },
+  "rectangleShape": {
+    "message": "Rettangolo",
+    "description": "Opzione forma rettangolo"
+  },
+  "circleShape": {
+    "message": "Cerchio",
+    "description": "Opzione forma cerchio"
+  },
+  "lineShape": {
+    "message": "Linea",
+    "description": "Opzione forma linea"
+  },
+  "shapeColorLabel": {
+    "message": "Colore forma:",
+    "description": "Etichetta per la selezione del colore della forma"
+  },
+  "confirmClearAnnotations": {
+    "message": "Sei sicuro di voler cancellare tutte le annotazioni?",
+    "description": "Messaggio di conferma per la cancellazione delle annotazioni"
+  },
+  "myAnnotationsTitle": {
+    "message": "Le Mie Annotazioni",
+    "description": "Titolo per la pagina delle annotazioni"
+  },
+  "choosePageLabel": {
+    "message": "Scegli una pagina:",
+    "description": "Etichetta per il menu a discesa di selezione pagina"
+  },
+  "noPagesWithAnnotations": {
+    "message": "Nessuna pagina con annotazioni",
+    "description": "Messaggio mostrato quando non ci sono pagine con annotazioni"
+  },
+  "noAnnotationsFound": {
+    "message": "Nessuna annotazione trovata.",
+    "description": "Messaggio mostrato quando non ci sono annotazioni"
+  },
+  "noAnnotationsForPage": {
+    "message": "Nessuna annotazione trovata per questa pagina.",
+    "description": "Messaggio mostrato quando non ci sono annotazioni per una pagina specifica"
+  },
+  "refreshButton": {
+    "message": "Aggiorna",
+    "description": "Pulsante per aggiornare le annotazioni"
+  },
+  "clearAllButton": {
+    "message": "Cancella Tutto",
+    "description": "Pulsante per cancellare tutte le annotazioni"
+  },
+  "confirmClearAllAnnotations": {
+    "message": "Sei sicuro di voler cancellare tutte le annotazioni per questa pagina?",
+    "description": "Messaggio di conferma per la cancellazione di tutte le annotazioni di una pagina"
+  },
+  "deleteButton": {
+    "message": "Elimina",
+    "description": "Pulsante per eliminare un'annotazione"
+  },
+  "confirmDeleteAnnotation": {
+    "message": "Sei sicuro di voler eliminare questa annotazione?",
+    "description": "Messaggio di conferma per l'eliminazione di un'annotazione"
+  },
+  "textHighlight": {
+    "message": "Evidenziazione Testo",
+    "description": "Etichetta per l'annotazione di evidenziazione testo"
+  },
+  "shapeLabel": {
+    "message": "Forma: $shapeType$",
+    "description": "Etichetta per l'annotazione di forma",
+    "placeholders": {
+      "shapeType": {
+        "content": "$1",
+        "example": "Rettangolo"
+      }
+    }
+  },
+  "positionLabel": {
+    "message": "Posizione: $left$, $top$",
+    "description": "Etichetta che mostra la posizione della forma",
+    "placeholders": {
+      "left": {
+        "content": "$1",
+        "example": "100"
+      },
+      "top": {
+        "content": "$2",
+        "example": "200"
+      }
+    }
+  }
+}
