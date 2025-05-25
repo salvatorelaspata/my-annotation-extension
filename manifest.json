@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Personal Annotation",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Highlight text and draw shapes on web pages.",
   "permissions": [
     "activeTab",
@@ -33,5 +33,6 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+  "default_locale": "en"
 }

@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(el => {
+    const messageName = el.getAttribute('data-i18n');
+    el.textContent = chrome.i18n.getMessage(messageName);
+  });
+
+  // Aggiorna anche il titolo della pagina
+  document.title = chrome.i18n.getMessage("myAnnotationsTitle");
   const urlSelect = document.getElementById('url-select');
   const annotationList = document.getElementById('annotation-list');
   const refreshBtn = document.getElementById('refresh-btn');
   const clearAllBtn = document.getElementById('clear-all-btn');
+  const goToWebsiteBtn = document.getElementById('goToWebsite-btn');
 
   let currentUrls = [];
   let currentAnnotations = {};
@@ -20,6 +29,13 @@ document.addEventListener('DOMContentLoaded', function () {
   urlSelect.addEventListener('change', displayAnnotationsForUrl);
   refreshBtn.addEventListener('click', refreshAnnotations);
   clearAllBtn.addEventListener('click', clearAllAnnotations);
+  goToWebsiteBtn.addEventListener('click', function () {
+    const url = urlSelect.value;
+    if (url) {
+      chrome.tabs.create({ url: url });
+    }
+  });
+
 
   async function initPage() {
     // Get the current active tab
@@ -72,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // If no URLs, display a message
     if (currentUrls.length === 0) {
       const option = document.createElement('option');
-      option.textContent = 'No pages with annotations';
+      option.textContent = chrome.i18n.getMessage("noPagesWithAnnotations");
       option.disabled = true;
       urlSelect.appendChild(option);
       urlSelect.disabled = true;
@@ -89,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
     annotationList.innerHTML = '';
 
     if (annotations.length === 0) {
-      annotationList.innerHTML = '<div class="empty-state">No annotations found for this page.</div>';
+      annotationList.innerHTML = `<div class="empty-state">${chrome.i18n.getMessage("noAnnotationsForPage")}</div>`;
       return;
     }
 
@@ -118,12 +134,12 @@ document.addEventListener('DOMContentLoaded', function () {
       actions.className = 'annotation-actions';
 
       if (annotation.type === 'highlight') {
-        type.textContent = 'Text Highlight';
+        type.textContent = chrome.i18n.getMessage("textHighlight");
 
         // Display the highlighted text
         const textSpan = document.createElement('span');
         textSpan.className = 'highlight-sample';
-        textSpan.textContent = annotation.text || 'Selected text';
+        textSpan.textContent = annotation.text || chrome.i18n.getMessage("selectedText");
         textSpan.style.backgroundColor = annotation.color;
         content.appendChild(textSpan);
 
@@ -131,7 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const colorPicker = createColorPicker(highlightColors, annotation.color, 'highlight', annotation.id);
         actions.appendChild(colorPicker);
       } else if (annotation.type === 'shape') {
-        type.textContent = `Shape: ${annotation.shapeType.charAt(0).toUpperCase() + annotation.shapeType.slice(1)}`;
+        const shapeLabel = chrome.i18n.getMessage("shapeLabel", [chrome.i18n.getMessage(annotation.shapeType + "Shape")]);
+        type.textContent = shapeLabel;
 
         // Show a sample of the shape
         const shapeSample = document.createElement('div');
@@ -151,16 +168,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         content.appendChild(shapeSample);
-        content.appendChild(document.createTextNode(`Position: ${annotation.left}, ${annotation.top}`));
+        const positionLabel = chrome.i18n.getMessage("positionLabel", [annotation.left, annotation.top]);
+        content.appendChild(document.createTextNode(positionLabel));
 
         // Shape type selector
         const shapeTypeSelect = document.createElement('select');
         shapeTypeSelect.className = 'shape-type-select';
+        shapeTypeSelect.name = 'shapeType-' + annotation.id;
+
 
         shapeTypes.forEach(type => {
           const option = document.createElement('option');
           option.value = type;
-          option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+          option.textContent = chrome.i18n.getMessage(type + "Shape");
           if (type === annotation.shapeType) {
             option.selected = true;
           }
@@ -180,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Delete button
       const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = 'Delete';
+      deleteBtn.textContent = chrome.i18n.getMessage("deleteButton");
       deleteBtn.className = 'danger';
       deleteBtn.addEventListener('click', function () {
         deleteAnnotation(annotation.id, url);
@@ -228,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function deleteAnnotation(annotationId, url) {
-    if (confirm('Are you sure you want to delete this annotation?')) {
+    if (confirm(chrome.i18n.getMessage("confirmDeleteAnnotation"))) {
       // If it's the active tab, send a message to the content script
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (tabs[0] && tabs[0].url === url) {
@@ -291,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function clearAllAnnotations() {
-    if (confirm('Are you sure you want to clear all annotations for this page?')) {
+    if (confirm(chrome.i18n.getMessage("confirmClearAllAnnotations"))) {
       const url = urlSelect.value;
 
       // If it's the active tab, send a message to the content script

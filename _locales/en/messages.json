@@ -1,0 +1,130 @@
+{
+  "extName": {
+    "message": "My Annotation Extension",
+    "description": "The name of the extension"
+  },
+  "extDescription": {
+    "message": "An extension to annotate web pages",
+    "description": "The description of the extension"
+  },
+  "browsePageButton": {
+    "message": "Browse Page",
+    "description": "Button to browse the page"
+  },
+  "highlightTextButton": {
+    "message": "Highlight Text",
+    "description": "Button to highlight text"
+  },
+  "drawShapeButton": {
+    "message": "Draw Shape",
+    "description": "Button to draw shapes"
+  },
+  "viewAnnotationsButton": {
+    "message": "View Annotations",
+    "description": "Button to view annotations"
+  },
+  "clearAnnotationsButton": {
+    "message": "Clear Annotations",
+    "description": "Button to clear all annotations"
+  },
+  "highlightColorLabel": {
+    "message": "Highlight color:",
+    "description": "Label for highlight color selection"
+  },
+  "shapeTypeLabel": {
+    "message": "Shape type:",
+    "description": "Label for shape type selection"
+  },
+  "rectangleShape": {
+    "message": "Rectangle",
+    "description": "Rectangle shape option"
+  },
+  "circleShape": {
+    "message": "Circle",
+    "description": "Circle shape option"
+  },
+  "lineShape": {
+    "message": "Line",
+    "description": "Line shape option"
+  },
+  "shapeColorLabel": {
+    "message": "Shape color:",
+    "description": "Label for shape color selection"
+  },
+  "confirmClearAnnotations": {
+    "message": "Are you sure you want to clear all annotations?",
+    "description": "Confirmation message for clearing annotations"
+  },
+  "myAnnotationsTitle": {
+    "message": "My Annotations",
+    "description": "Title for the annotations page"
+  },
+  "choosePageLabel": {
+    "message": "Choose a page:",
+    "description": "Label for page selection dropdown"
+  },
+  "noPagesWithAnnotations": {
+    "message": "No pages with annotations",
+    "description": "Message shown when there are no pages with annotations"
+  },
+  "noAnnotationsFound": {
+    "message": "No annotations found.",
+    "description": "Message shown when no annotations are found"
+  },
+  "noAnnotationsForPage": {
+    "message": "No annotations found for this page.",
+    "description": "Message shown when no annotations are found for a specific page"
+  },
+  "refreshButton": {
+    "message": "Refresh",
+    "description": "Button to refresh annotations"
+  },
+  "clearAllButton": {
+    "message": "Clear All",
+    "description": "Button to clear all annotations"
+  },
+  "confirmClearAllAnnotations": {
+    "message": "Are you sure you want to clear all annotations for this page?",
+    "description": "Confirmation message for clearing all annotations for a page"
+  },
+  "deleteButton": {
+    "message": "Delete",
+    "description": "Button to delete an annotation"
+  },
+  "confirmDeleteAnnotation": {
+    "message": "Are you sure you want to delete this annotation?",
+    "description": "Confirmation message for deleting an annotation"
+  },
+  "textHighlight": {
+    "message": "Text Highlight",
+    "description": "Label for text highlight annotation"
+  },
+  "shapeLabel": {
+    "message": "Shape: $shapeType$",
+    "description": "Label for shape annotation",
+    "placeholders": {
+      "shapeType": {
+        "content": "$1",
+        "example": "Rectangle"
+      }
+    }
+  },
+  "positionLabel": {
+    "message": "Position: $left$, $top$",
+    "description": "Label showing position of shape",
+    "placeholders": {
+      "left": {
+        "content": "$1",
+        "example": "100"
+      },
+      "top": {
+        "content": "$2",
+        "example": "200"
+      }
+    }
+  },
+  "goToWebsiteButton": {
+    "message": "Go to Website",
+    "description": "Button to navigate to the website of the annotation"
+  }
+}

@@ -2,22 +2,29 @@
 <html>
 
 <head>
-  <title>Annotazione</title>
+  <title data-i18n="extName"></title>
   <link rel="stylesheet" type="text/css" href="popup.css">
   <!-- <script src="./lib/tailwindcss.js"></script> -->
 </head>
 
 <body>
-  <h1>Annotazione</h1>
+  <h1 data-i18n="extName"></h1>
+
+  <!-- Add this status display section -->
+  <div id="statusDisplay" class="status-display hidden">
+    <!-- <div class="status-icon">⚠️</div> -->
+    <div class="status-message"></div>
+  </div>
+
   <div class="controls">
-    <button id="browseBtn" class="active">Naviga Pagina</button>
-    <button id="highlightBtn">Evidenzia Testo</button>
-    <button id="drawBtn">Disegna Forma</button>
-    <button id="viewAnnotationsBtn">Visualizza Annotazioni</button>
-    <button id="clearBtn" class="danger">Cancella Annotazioni</button>
+    <button id="browseBtn" class="active" data-i18n="browsePageButton"></button>
+    <button id="highlightBtn" data-i18n="highlightTextButton"></button>
+    <button id="drawBtn" data-i18n="drawShapeButton"></button>
+    <button id="viewAnnotationsBtn" class="viewAnnotationsBtn" data-i18n="viewAnnotationsButton"></button>
+    <!-- <button id="clearBtn" class="danger" data-i18n="clearAnnotationsButton"></button> -->
 
     <div id="highlightOptions" class="options-group">
-      <p>Colore evidenziatura:</p>
+      <p data-i18n="highlightColorLabel"></p>
       <div class="color-picker">
         <div class="color-option" data-color="yellow" style="background-color: yellow;"></div>
         <div class="color-option" data-color="lightgreen" style="background-color: lightgreen;"></div>
@@ -27,13 +34,13 @@
     </div>
 
     <div id="drawOptions" class="options-group hidden">
-      <p>Tipo di forma:</p>
+      <p data-i18n="shapeTypeLabel"></p>
       <select id="shapeType">
-        <option value="rectangle">Rettangolo</option>
-        <option value="circle">Cerchio</option>
-        <option value="line">Linea</option>
+        <option value="rectangle" data-i18n="rectangleShape"></option>
+        <option value="circle" data-i18n="circleShape"></option>
+        <option value="line" data-i18n="lineShape"></option>
       </select>
-      <p>Colore forma:</p>
+      <p data-i18n="shapeColorLabel"></p>
       <div class="color-picker">
         <div class="shape-color" data-color="red" style="background-color: red;"></div>
         <div class="shape-color" data-color="green" style="background-color: green;"></div>
