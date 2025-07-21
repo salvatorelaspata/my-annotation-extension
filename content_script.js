@@ -1,4 +1,4 @@
-let currentMode = 'highlight'; // Default mode
+let currentMode = 'browse'; // Default mode
 let isDrawing = false;
 let startX, startY;
 let currentRect = null;

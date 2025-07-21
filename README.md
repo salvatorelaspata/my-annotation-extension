@@ -2,6 +2,8 @@
 
 This is a simple extension for annotating text in the browser. It allows you to highlight text and add notes to it. The annotations are stored in the browser's local storage, so they will persist even after you close the browser.
 
+[Chrome Web Extension](https://chromewebstore.google.com/detail/jcfcndknemifbpngmkicoeahmaemjcbk?utm_source=item-share-cb)
+
 ## Features
 
 - Highlight text
@@ -11,10 +13,10 @@ This is a simple extension for annotating text in the browser. It allows you to 
 - Delete individual annotations
 - Clear all annotations
 
-## Installation
+## Installation for development
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/my-annotation-extension.git
+   git clone https://github.com/salvatorelaspata/my-annotation-extension.git
    cd my-annotation-extension
    ```
 2. Load the extension in your browser:
@@ -36,6 +38,10 @@ This is a simple extension for annotating text in the browser. It allows you to 
       4. Click "Install" to install the extension
 3. Open the extension popup by clicking the extension icon in the browser toolbar.
 4. Start annotating text on any webpage!
+
+## Installation for production
+
+Use [Chrome Web Store](https://chromewebstore.google.com/detail/jcfcndknemifbpngmkicoeahmaemjcbk?utm_source=item-share-cb) or Firefox Add-ons to publish the extension
 
 ## Usage
 
